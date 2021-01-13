@@ -219,7 +219,7 @@ def test_email_must_be_unique
 end
 ```
 
-We can run all the test in a given file as follows:
+We can run all the tests in a given file as follows:
 
 ```
 rails test --verbose test/models/user_test.rb
