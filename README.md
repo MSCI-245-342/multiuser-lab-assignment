@@ -1,2 +1,2 @@
 # multiuser-lab-assignment
-See hw-instructions.md
+See instructions.md
