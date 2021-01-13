@@ -322,7 +322,7 @@ In `app/models/user.rb` add:
 has_secure_password
 ```
 
-this ads two virtual fields to the User model: `password` and `password_confirmation`.
+this adds two virtual fields to the User model: `password` and `password_confirmation`.
 
 In the database, we need to add a single "password_digest" column to the users table to hold the hashed password:
 
