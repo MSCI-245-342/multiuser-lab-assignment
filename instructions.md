@@ -119,10 +119,6 @@ Sometimes it can be super nice to use Rails scaffolding and create a bunch of co
 rails generate scaffold User name:string email:string
 ```
 
-There are some functions of the scaffolding that we don't need: a list of users ()
-
-
-
 In addition to the files you are used to seeing made for a scaffold, with the test framework turned on, we get some additional files made for us:
 
 ```
