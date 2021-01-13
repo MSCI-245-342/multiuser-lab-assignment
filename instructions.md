@@ -383,7 +383,7 @@ Now would be a good time to commit your changes and push to Github.
 
 After a user has created an account, we want to store an identifier securely in their web browser so that we can identify them on every request they make to our web app.
 
-If you recall from MSCI 245, Rails has a [`session` variable that works as a hash](https://guides.rubyonrails.org/action_controller_overview.html#session).  For example, when a user logs in, we can save their user id into the session, which Rails then put into their browser via an encrypted cookie.  Assuming `user` hold our User object:
+If you recall from MSCI 245, Rails has a [`session` variable that works as a hash](https://guides.rubyonrails.org/action_controller_overview.html#session).  For example, when a user logs in, we can save their user id into the session, which Rails then put into their browser via an encrypted cookie.  Assuming `user` holds our User object:
 
 ```
 session[:user_id] = user.id
