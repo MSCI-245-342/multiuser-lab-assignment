@@ -354,7 +354,7 @@ Now that the User model has virtual fields `password` and `password_confirmation
   </div>
 ```
 
-Notice the user of `password_field` and not `text_field`.
+Notice the use of `password_field` and not `text_field`.
 
 Now, we need to modify the users controller to accept the new input fields.  
 
