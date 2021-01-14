@@ -469,7 +469,7 @@ In MSCI 342, I expect that either you will be using a small portion of a larger 
 
 #### Sessions Controller
 
-Let's work on the controller in `test/controllers/sessions_controller_test.rb` first.  Replace the code in the file with this code:
+Let's work on the controller in `app/controllers/sessions_controller.rb` first.  Replace the code in the file with this code:
 
 ```ruby
 # This code is copied and modified from Hartl's 
