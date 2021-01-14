@@ -817,7 +817,7 @@ Commit and push to GitHub.
 
 1. Verify that everything seems to work.  
 2. Make sure with `git status` that there isn't anything left to commit and push to GitHub.  If there is, commit and push.
-3. Go check GitHub to verify you see you whole project committed.  Because the README.md was the last thing to get added, if you see it, you should probably be good.
+3. Go check GitHub to verify you see your whole project committed.  Because the README.md was the last thing to get added, if you see it, you should probably be good.
 
 That's it.  The purpose of this assignment was to show you how we can do authentication and authorization in our apps, and to get you back in the Ruby on Rails groove.  
 
