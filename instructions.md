@@ -793,7 +793,7 @@ bundle exec puma -C config/puma.rb
 ```
 5. Make sure you have committed all changes to git.  Run `git status` to make sure there are no outstanding changes to commit.
 
-6. git push heroku master
+6. git push heroku main
 
 7. Go verify that your Heroku deployment works.
 
