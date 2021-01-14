@@ -736,7 +736,7 @@ Go run your server and test out that things work as expected.  If you aren't log
 Now, we want to make sure users are allowed to delete or edit their own accounts and not the accounts of other users.  These are the `edit`, `update`, and `destroy` actions.  So, we'll create another before_action filter that checks if a user is authorized to make these changes.  Add to UsersController **after** the other two before_action filters:
 
 ```ruby
-before_action :authorized_to_modify_and_destroy, only: [:edit, :update, :delete]
+before_action :authorized_to_modify_and_destroy, only: [:edit, :update, :destroy]
 ```
 
 so now UsersController looks like this at the top:
