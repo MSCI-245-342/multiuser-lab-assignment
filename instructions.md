@@ -405,7 +405,7 @@ First, in `config\routes.rb` add:
   get    '/logout', to: 'sessions#destroy' 
 ```
 
-From the above routes, you can see that we want our sessions_controller to support the actions: new, create, and destroy.  Only the `new` action need a view to display a login form with email and password.  Thus, we'll generate a Sessions controller with an action of `new` and then hand edit the controller to add the other actions:
+From the above routes, you can see that we want our sessions_controller to support the actions: new, create, and destroy.  Only the `new` action needs a view to display a login form with email and password.  Thus, we'll generate a Sessions controller with an action of `new` and then hand edit the controller to add the other actions:
 
 ```
 rails generate controller Sessions new
