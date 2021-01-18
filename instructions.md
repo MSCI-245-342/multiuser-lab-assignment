@@ -789,7 +789,7 @@ Let's deploy your app to Heroku.  Recall how we do this:
 
 4. In the multiuser directory, create a file named `Procfile` and put this command in the file [heroku instructions](https://devcenter.heroku.com/articles/getting-started-with-rails6):
 ```
-web: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+web: bundle exec puma -C config/puma.rb
 ```
 5. Make sure you have committed all changes to git.  Run `git status` to make sure there are no outstanding changes to commit.
 
