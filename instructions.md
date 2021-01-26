@@ -795,7 +795,9 @@ web: bundle exec puma -C config/puma.rb
 
 6. git push heroku main
 
-7. Go verify that your Heroku deployment works.
+7. heroku run rails db:migrate
+
+8. Go verify that your Heroku deployment works.
 
 ### Update the README.md
 
