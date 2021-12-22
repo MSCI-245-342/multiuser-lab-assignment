@@ -1,6 +1,6 @@
 # User Authentication and Authorization
 
-Note: The material in this self-guided lab and assignment is based on Chapters 6, 7, 8, and 10 of "Ruby on Rails Tutorial, 6th Edition" by Hartl.  Portions of code are used from Hartl's tutorial.  Students can view the book by [viewing the book's page in the university library catalog](https://ocul-wtl.primo.exlibrisgroup.com/permalink/01OCUL_WTL/5ob3ju/alma999986595715005162) and clicking on the "O'Reilly for Higher Education" link under "View Online".
+Note: The material in this self-guided lab and assignment is based on Chapters 6, 7, 8, and 10 of "Ruby on Rails Tutorial, 6th Edition" by Hartl.  Portions of code are used from Hartl's tutorial.  Students can view the book by [viewing the book's page in the university library catalog (note: one link goes to videos, the other link goes to the book)](https://ocul-wtl.primo.exlibrisgroup.com/permalink/01OCUL_WTL/5ob3ju/alma999986595715005162) and clicking on the "O'Reilly for Higher Education" link under "View Online".
 
 Objective: Refresh Ruby on Rails knowledge by showing how to add simple user authentication and authorization to a web app.
 
