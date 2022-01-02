@@ -1,4 +1,6 @@
-# User Authentication and Authorization
+# User Authentication and Authorization Lab
+
+Author: Mark D. Smucker
 
 Note: The material in this self-guided lab and assignment is based on Chapters 6, 7, 8, and 10 of "Ruby on Rails Tutorial, 6th Edition" by Hartl.  Portions of code are used from Hartl's tutorial.  Students can view the book by [viewing the book's page in the university library catalog (note: one link goes to videos, the other link goes to the book)](https://ocul-wtl.primo.exlibrisgroup.com/permalink/01OCUL_WTL/5ob3ju/alma999986595715005162) and clicking on the "O'Reilly for Higher Education" link under "View Online".
 
@@ -412,7 +414,7 @@ From the above routes, you can see that we want our sessions_controller to suppo
 rails generate controller Sessions new
 ```
 
-To determine what will be passed into the controller when a user submits their login information, lets edit the view in `app/views/sessions/new.html.erb` first.  Delete what is in there and paste in this:
+To determine what will be passed into the controller when a user submits their login information, let's edit the view in `app/views/sessions/new.html.erb` first.  Delete what is in there and paste in this:
 
 ```erb
 <h1>Login</h1>
@@ -449,7 +451,7 @@ To determine what will be passed into the controller when a user submits their l
   </body>
  ```
 
-Now, we can use the `flash` as part of our solution.
+Now, we can use the `flash` as part of our solution.  The above code goes through the flash hash's keys and values and displays them all.  Because the application layout is used on every page in our application, this provides a simple and default way to be sure the flash messages are always displayed for us.
 
 ### Intellectual Property and ethics
 
@@ -605,6 +607,7 @@ It is in the `UsersController` that a new user is created.  If the new user is s
     end
   end
 ```
+NOTE: if you copy and paste this method, be sure to delete the old one!  Ruby will not complain to you about having two methods with the same name. Only the last method will be used, and this is a nightmare to debug unless you notice your mistake.
 
 Let's edit the links on the users edit view (`app/views/users/edit.html.erb`) to only have a link back to the home page.  So we change it to be:
 
@@ -622,7 +625,7 @@ Same for `app/views/users/new.html.erb`:
 <%= link_to 'Home', root_path %>
 ```
 
-When viewing a user (`app/views/users/show.html.erb`), lets have links to all users and root.  We'll also get rid of the flash notice because we added them to our application layout (make your copy match):
+When viewing a user (`app/views/users/show.html.erb`), lets have links to all users and root.  We'll also get rid of the flash notice because we added them to our application layout (make your copy match and compare them before deleting the old one):
 
 ```erb
 <h1>User Account Details</h1>
@@ -639,7 +642,7 @@ When viewing a user (`app/views/users/show.html.erb`), lets have links to all us
 <%= link_to 'Home', root_path %> |
 <%= link_to 'List All Users', users_path %>
 ```
-For the list of users (`app/views/users/index.html.erb`), we'll also remove the flash notice so that it isn't duplicated.  Also, the link to destroy (delete) a user won't work for us because it relies on javascript, and so we'll change it to a form submit.  By the way, there are ways to use CSS to style a submit button as a link if needed.  Do not turn the destroy action into a GET request!  Destructive actions should not be done via GET requests. Make your `index.html.erb` match the below:
+For the list of users (`app/views/users/index.html.erb`), we'll also remove the flash notice so that it isn't duplicated.  Also, the link to destroy (delete) a user won't work for us because it relies on javascript, and so we'll change it to a form submit.  By the way, there are ways to use CSS to style a submit button as a link if needed.  Do not turn the destroy action into a GET request!  Destructive actions should not be done via GET requests. Make your `index.html.erb` match the below (compare them before deleting the old one):
 
 ```erb
 <h1>Users</h1>
@@ -794,9 +797,9 @@ web: bundle exec puma -C config/puma.rb
 ```
 5. Make sure you have committed all changes to git.  Run `git status` to make sure there are no outstanding changes to commit.
 
-6. git push heroku main
+6. `git push heroku main`
 
-7. heroku run rails db:migrate
+7. `heroku run rails db:migrate`
 
 8. Go verify that your Heroku deployment works.
 
