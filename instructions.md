@@ -79,24 +79,24 @@ In `test/test_helper.rb` also comment out:
 #fixtures :all
 ```
 
-For now, the use of fixtures, for testing, complicates our work, and we'll avoid using them.
+The use of fixtures, for testing, complicates our work, and we'll avoid using them in MSCI 342 in most cases.
 
 In `test/application_system_test_case.rb`, comment out: 
 
 ```ruby
-driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
+   driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
 ```
 
 and add:
 
 ```ruby
-driven_by :rack_test
+   driven_by :rack_test
 ```
 
 So, you'll end up with:
 ```
-#driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
-driven_by :rack_test
+#  driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
+   driven_by :rack_test
 ```
 
 The `:rack_test` driver cannot process javascript, but it runs very quickly.  The issue with using `:selenium` and Chrome as our system test driver is that I haven't been able to get these components to install correctly on Codio.  Projects in MSCI 342 should not use javascript, and so this will not be an issue.
@@ -116,19 +116,16 @@ Then run `rails server -b 0.0.0.0` and go to your "Box URL".  Make you get "Yay!
 Sometimes it can be super nice to use Rails scaffolding and create a bunch of code quickly that we then go and customize to our needs.  Users are basically the same as a resource, and the basic scaffolding makes sense except we'll want to modify the routes a bit for naming convienence.
 
 ```
-rails generate scaffold User name:string email:string
+rails generate scaffold User name:string email:string --no-fixture
 ```
 
-In addition to the files you are used to seeing made for a scaffold, with the test framework turned on, we get some additional files made for us:
+The `--no-fixture` option is used to suppress the automatic creation of fixtures, which we are not using. In addition to the files you are used to seeing made for a scaffold, with the test framework turned on, we get some additional files made for us:
 
 ```
 create      test/models/user_test.rb
-create      test/fixtures/users.yml
 create      test/controllers/users_controller_test.rb
 create      test/system/users_test.rb      
 ```
-
-The `test/fixtures/users.yml` file is the automatically generated fixtures for the User model.  You'll almost always need to edit this file if you use fixtures.  We're going to ignore it.
 
 Rails produces tests for the model, the controller, and the "system" that are appropriate for testing the scaffolding code it produced for us.  
 
@@ -138,14 +135,14 @@ The controller test works by sending HTTP requests directly to the app and allow
 
 The system tests, operate by simulating user clicks and input into the user interface, and these are what are typically called "end to end" tests (E2E tests).  These tests are good for testing a complete workflow in an application.
 
-The tests as they currently exist would fail in many cases because they rely on the fixtures, which we've disabled.
+The default system tests in `test/system/users_test.rb` will fail because they rely on fixtures, which we've disabled. Nevertheless, the default system tests offer a good starting point for creating system tests for a [CRUD](https://edgeguides.rubyonrails.org/getting_started.html#crudit-where-crudit-is-due) model.
 
 Let's fix up the User model in first.  We know that we want some help from the database to maintain data integrity, and so we first go to `db/migrate` and open up the migration for the users table (will be named with a timestamp and create_user.rb).
 
 We want to limit the size of names to something reasonable such as 70 characters and prevent nulls.  We also want a length limit for the email, no nulls, and we want each user to have a unique email address.  No two users should have the same email, and so we'll add an index on email to enforce uniqueness at the database level.  Make your migration look like:
 
 ```ruby
-class CreateUsers < ActiveRecord::Migration[6.0]
+class CreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
       t.string :name,  null: false, limit: 70 
@@ -206,7 +203,7 @@ end
 
 Go ahead and delete the commented material from the file.
 
-We write tests in MiniTest by simply create a ruby method that starts with the name "test".  For example, let's say that I wanted to test that I cannot create and save two User objects with the same email, I could add the following method to the UserTest object (go ahead and do this):
+We write tests in MiniTest by simply creating a Ruby method that starts with the name "test".  For example, let's say that I wanted to test that I cannot create and save two User objects with the same email, I could add the following method to the UserTest object (go ahead and do this):
 
 ```ruby
 def test_email_must_be_unique
@@ -247,6 +244,10 @@ To see this behavior, change either user1's or user2's email to be different and
 Did you notice that we can run this test over and over again and not have problems with user1 already being saved to the database? The testing framework in Rails runs each test in a transaction and then rolls it back at the end of the test so that the database goes back to the same state as it was at the start of the test.  In addition, it is the multiuser_test database that is used by testing and not the multiuser_development database.  It is common for us to use the development database for debugging, and we may leave it filled with all sorts of strange data, which could affect the running of tests.  When we run tests, we want to be absolutely certain of the state of the system, and a separate testing database helps with this goal.
 
 We will talk much more about testing in MSCI 342.  For now, it is good to know that it exists and isn't that hard to use.
+
+In the last week of MSCI 245, we covered an introduction to testing and Minitest. You are expected to have already watched these lectures. For your reference, these are the lectures:
++ [MSCI 245: Testing](https://youtu.be/2yYSR6ftxUo)
++ [MSCI 245: A quick intro to Minitest and automated testing](https://youtu.be/JYbHurKGzM0)
 
 ## Routes
 
