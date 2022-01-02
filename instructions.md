@@ -19,7 +19,7 @@ cd multiuser
 and then do:
 
 ```
-rails new . --skip-action-mailbox --skip-action-text --skip-active-storage --skip-action-cable --skip-spring --skip-javascript --skip-turbolinks --database=postgresql --skip-bundle 
+rails new . --skip --skip-action-mailbox --skip-action-text --skip-active-storage --skip-action-cable --skip-spring --skip-javascript --skip-turbolinks --database=postgresql --skip-bundle 
 ```
 
 to create your rails install.  In the Codio setup for MSCI 245 and MSCI 342, we do not have a good way to test web apps built using javascript.  Thus, both `--skip-javascript` and `--skip-turbolinks` are used to disable parts of Rails that depend on javascript.  The other "skip" options are to exclude parts of Rails you are unlikely to need to use on the course project and which simply clutter up your app and make working on Rails harder. 
