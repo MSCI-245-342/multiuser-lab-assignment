@@ -203,17 +203,17 @@ end
 
 Go ahead and delete the commented material from the file.
 
-We write tests in MiniTest by simply creating a Ruby method that starts with the name "test".  For example, let's say that I wanted to test that I cannot create and save two User objects with the same email, I could add the following method to the UserTest object (go ahead and do this):
+We write tests in MiniTest by simply creating a Ruby method that starts with the name "test".  For example, let's say that I wanted to test that I cannot create and save two User objects with the same email, I could add the following method to the UserTest class (go ahead and do this):
 
 ```ruby
-def test_email_must_be_unique
-    user1 = User.new(name: "Example User", 
-       email: "user@example.com" )
-    user1.save! # if fails, an error is raised
-    user2 = User.new(name: "Example User", 
-       email: "user@Example.com" ) # also check downcase
-    assert_not user2.valid?     
-end
+   def test_email_must_be_unique
+      user1 = User.new(name: "Example User", 
+         email: "user@example.com" )
+      user1.save! # if fails, an error is raised
+      user2 = User.new(name: "Example User", 
+         email: "user@Example.com" ) # also check downcase
+      assert_not user2.valid?     
+   end
 ```
 
 We can run all the tests in a given file as follows:
@@ -245,7 +245,7 @@ Did you notice that we can run this test over and over again and not have proble
 
 We will talk much more about testing in MSCI 342.  For now, it is good to know that it exists and isn't that hard to use.
 
-In the last week of MSCI 245, we covered an introduction to testing and Minitest. You are expected to have already watched these lectures. For your reference, these are the lectures:
+In MSCI 245, we covered an introduction to testing and Minitest. You are expected to have already watched these lectures. For your reference, these are the lectures:
 + [MSCI 245: Testing](https://youtu.be/2yYSR6ftxUo)
 + [MSCI 245: A quick intro to Minitest and automated testing](https://youtu.be/JYbHurKGzM0)
 
@@ -309,7 +309,7 @@ run `rails server -b 0.0.0.0` and verify that it works.
 
 Our User model lacks a password.  When we create a new user, we want the user to supply a password that we can use when they want to login to verify that they are who they say they are.
 
-Never ever store passwords in a database.  
+**Never store passwords in a database.**
 
 When a user types in a password that we can read, that is called a "plaintext" password.  If we store the plaintext password in the database, any employee or any hacker with access to the database can copy the password and use it to gain access to the user's account.  Instead of storing the plaintext password, we store a cryptographic hash of the password in the database.  It is computationally infeasible to determine a plaintext password from the hashed password.  Only the original plaintext password can be used by a user to login, and thus the passwords are safe when stored in this hashed form.
 
