@@ -311,9 +311,9 @@ Our User model lacks a password.  When we create a new user, we want the user to
 
 **Never store passwords in a database.**
 
-When a user types in a password that we can read, that is called a "plaintext" password.  If we store the plaintext password in the database, any employee or any hacker with access to the database can copy the password and use it to gain access to the user's account.  Instead of storing the plaintext password, we store a cryptographic hash of the password in the database.  It is computationally infeasible to determine a plaintext password from the hashed password.  Only the original plaintext password can be used by a user to login, and thus the passwords are safe when stored in this hashed form.
+When a user types in a password that we can read, that is called a ["plaintext"](https://en.wikipedia.org/wiki/Plaintext) password.  If we store the plaintext password in the database, any employee or any hacker with access to the database can copy the password and use it to gain access to the user's account.  Instead of storing the plaintext password, we store a cryptographic hash of the password in the database.  It is computationally infeasible to determine a plaintext password from the hashed password.  Only the original plaintext password can be used by a user to login, and thus the passwords are safe when stored in this hashed form.
 
-When a user shows up to login, we take their plaintext password and hash it and compare the hash version to the version stored in the database.  If they match, we know the user used the same plaintext password as before, and we have authenticated them.
+When a user shows up to login, we take their plaintext password and hash it and compare the hashed version to the version stored in the database.  If they match, we know the user used the same plaintext password as before, and we have authenticated them.
 
 This is such an important thing for web apps, that Rails provides a special method for ActiveRecord models to handle the password.
 
@@ -332,7 +332,7 @@ rails generate migration add_password_digest_to_users password_digest:string
 rails db:migrate
 ```
 
-If you'd like, you can verify using psql that a column has been added to the users table.
+If you'd like, you can verify using `psql` that a column has been added to the `users` table. (The `rails generate migration` here is being super smart to make the migration we need because we called the migration `add_password_digest_to_users`.  In general, you will not be able to rely on this sort of magic, and you will always need to verify that the generated migration is as you want it to be before you run it.  If you run a migration that you don't like, remember that you can rollback migrations, too.) 
 
 It is nice to validate that people don't use a blank password and that passwords have a minimum length.  Add the following validations to your User model in `app/models/user.rb`:
 
@@ -341,7 +341,7 @@ validates_presence_of :password
 validates_length_of :password, minimum: 5
 ```
 
-Now that the User model has virtual fields `password` and `password_confirmation`, we need to modify the view to allow users to specify these fields when creating an account.  Modify `app/views/users/_form.html.erb` to have this additional code:
+Now that the User model has virtual fields `password` and `password_confirmation`, we need to modify the view to allow users to specify these fields when creating an account.  Modify the partial view `app/views/users/_form.html.erb` to have this additional code after the name and email and before the submit button:
 
 ```html
   <div class="field">
@@ -378,7 +378,7 @@ and then
 select * from users ;
 ```
 
-Now would be a good time to commit your changes and push to Github.
+Now would be a good time to commit your changes and push to GitHub.
 
 ## Sessions
 
